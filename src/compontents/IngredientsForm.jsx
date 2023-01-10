@@ -1,6 +1,6 @@
 
 export default function IngredientsForm(props) {
-    console.log(props)
+
     return (
         <div className='ingredients-section'>
       <h2>
@@ -14,8 +14,9 @@ export default function IngredientsForm(props) {
             className="ingredient-input"
             type="text"
             placeholder=""
-            name="ingredient"
-            value=""
+            name="firstIngredient"
+            onChange={props.handleChange}
+            value={props.formData.firstIngredient}
             />
         </form>
         <h3>Ingredient 2</h3>
@@ -24,8 +25,9 @@ export default function IngredientsForm(props) {
             className="ingredient-input"
             type="text"
             placeholder=""
-            name="ingredient"
-            value=""
+            name="secondIngredient"
+            onChange={props.handleChange}
+            value={props.formData.secondIngredient}
             />
         </form>
         <h3>Ingredient 3</h3>
@@ -34,8 +36,9 @@ export default function IngredientsForm(props) {
             className="ingredient-input"
             type="text"
             placeholder=""
-            name="ingredient"
-            value=""
+            name="thirdIngredient"
+            onChange={props.handleChange}
+            value={props.formData.thirdIngredient}
             />
         </form>
       </div>
