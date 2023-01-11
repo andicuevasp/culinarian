@@ -4,7 +4,7 @@ export default function RecipeList(props) {
 
   const recipeElement = data.results.map(recipe => {
     return (
-      <ul>
+      <ul key={recipe.title}>
         <li>
           <a href={recipe.sourceUrl} target="_blank">
             <img src={recipe.image} />
