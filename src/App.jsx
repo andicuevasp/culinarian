@@ -2,7 +2,7 @@ import Header from "./compontents/Header"
 import IngredientsForm from "./compontents/IngredientsForm";
 import RecipeList from "./compontents/RecipeList";
 import { useState,useEffect } from 'react'
-import dataCopy from "./dataCopy"
+
 
 
 function App() {
@@ -22,9 +22,7 @@ function App() {
       recipeTitle: ""
     }
   );
-  const [recipeData,setRecipeData] = useState(dataCopy.results.map(recipe=> {
-    return recipe
-  }));
+  const [recipeData,setRecipeData] = useState([]);
 
   function handleChange(e) {
     setFormData(prevFormData => {
