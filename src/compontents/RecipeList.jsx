@@ -1,14 +1,13 @@
-import data from "../data"
 
 export default function RecipeList(props) {
 
-  const recipeElement = data.results.map(recipe => {
+  const recipeElement = props.recipe.map(recipe => {
     return (
-      <ul key={recipe.title}>
+      <ul key={recipe.recipeTitle}>
         <li>
-          <a href={recipe.sourceUrl} target="_blank">
-            <img src={recipe.image} />
-            <h4>{recipe.title}</h4>
+          <a href={recipe.recipeSourceUrl} target="_blank">
+            <img src={recipe.recipeImage} />
+            <h4>{recipe.recipeTitle}</h4>
           </a>
         </li>
       </ul>

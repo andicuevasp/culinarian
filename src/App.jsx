@@ -1,7 +1,7 @@
 import Header from "./compontents/Header"
 import IngredientsForm from "./compontents/IngredientsForm";
 import RecipeList from "./compontents/RecipeList";
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import dataCopy from "./dataCopy"
 
 
@@ -19,33 +19,13 @@ function App() {
     {
       recipeSourceUrl:"",
       recipeImage:"",
-      recipeTitle
+      recipeTitle: ""
     }
   );
   const [recipeData,setRecipeData] = useState(dataCopy.results.map(recipe=> {
     return recipe
-  }))
+  }));
 
-  function searchRecipes(firstIng,secondIng,thirdIng) {
-    setBeginSearch(true)
-    
-    const ingredientsList = dataCopy.results.map(recipe=> {
-      return recipe.ingredients.map(ingredient=> {
-        return ingredient.name
-      })
-    })
-    
-    if(ingredientsList.includes(firstIng) && ingredientsList.includes(secondIng) && ingredientsList.includes(thirdIng)) {
-      setRecipe(prevRecipe=> {
-        {
-          recipeSourceUrl: dataCopy.results.map(recipe=>{
-            return recipe.sourceUrl
-          }),
-          re
-        }
-      })
-    }
-  }
   function handleChange(e) {
     setFormData(prevFormData => {
       return {
@@ -55,11 +35,38 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    async function getRecipes(){
+      const res= await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=63966116a4304fd2b37f3b26f45720a9&includeIngredients=${formData.firstIngredient},${formData.secondIngredient},${formData.thirdIngredient}&number=5&addRecipeInformation=true`)
+      const data = await res.json();
+      setRecipeData(data.results.map(recipe=> {
+        return recipe
+      }))
+      console.log(recipeData)
+    }
+     getRecipes(); 
+  }, [recipe])
+
+  function searchRecipes() {
+    setBeginSearch(true)
+    setRecipe(prevRecipe=> {
+      return recipeData.map(recipe=>{
+        return (
+          {
+            ...prevRecipe,
+            recipeSourceUrl: recipe.sourceUrl,
+            recipeImage: recipe.image,
+            recipeTitle: recipe.title
+          }
+        )
+      })
+    })
+
+  }
+
   function resetButton() {
     setBeginSearch(false)
   }
-
-  
 
   return (
     <main>
@@ -73,6 +80,7 @@ function App() {
     : <RecipeList 
     resetButton={resetButton}
     formData={formData}
+    recipe={recipe}
     />}
     </main>
   )
