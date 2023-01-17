@@ -35,15 +35,15 @@ function App() {
 
   useEffect(() => {
     async function getRecipes(){
-      const res= await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=63966116a4304fd2b37f3b26f45720a9&includeIngredients=${formData.firstIngredient},${formData.secondIngredient},${formData.thirdIngredient}&number=5&addRecipeInformation=true`)
+      const res= await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_CULINARIAN_APP_API_KEY}&includeIngredients=${formData.firstIngredient},${formData.secondIngredient},${formData.thirdIngredient}&number=5&addRecipeInformation=true`)
       const data = await res.json();
-      setRecipeData(data.results.map(recipe=> {
-        return recipe
-      }))
-      console.log(recipeData)
+      setRecipeData(data.results.map(recipe => recipe))
+      
     }
      getRecipes(); 
   }, [recipe])
+
+  console.log(recipeData)
 
   function searchRecipes() {
     setBeginSearch(true)
