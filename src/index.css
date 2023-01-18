@@ -1,13 +1,85 @@
+/* General Styles */
 *,*::before,*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background-color: #E8F3D6;
+  color: #FAAB78;
+  font-family: 'Inter', sans-serif;
 }
 
 img {
   display: block;
-  /* width: 100%; */
   margin: auto;
+}
+
+main {
+  margin: 10px;
+} 
+
+button {
+  background: #FAAB78;
+  border: 1px solid #FAAB78;
+  border-radius: 4px;
+  font-family: 'Bellota', cursive;
+  font-size: 1.5em;
+  color: #FCF9BE;
+  margin:10px;
+}
+
+/* Header Styles */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Bellota', cursive;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+/* Ingredients Section Styles */
+
+.ingredients-section {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.5em;
+  text-align: justify;
+}
+
+.ingredients-form {
+ 
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 5px;
+  line-height: 30px;
+}
+
+.ingredients {
+  margin-bottom:10px;
+}
+
+input {
+  padding: 20px 60px;
+  background: #FFFEEE;
+  border: 1px solid #FFDCA9;
+  border-radius: 5px;
 }

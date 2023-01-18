@@ -28,9 +28,11 @@ function App() {
       },${formData.secondIngredient},${formData.thirdIngredient}&number=5&addRecipeInformation=true`
     );
     const data = await res.json();
+    console.log(data)
     setRecipeData(data.results);
     setBeginSearch(true);
   }
+
 
   function resetButton() {
     setBeginSearch(false);
