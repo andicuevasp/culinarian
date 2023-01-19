@@ -20,18 +20,22 @@ function App() {
       };
     });
   }
-
-  async function getRecipes() {
-    const res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_CULINARIAN_APP_API_KEY}&includeIngredients=${
-        formData.firstIngredient
-      },${formData.secondIngredient},${formData.thirdIngredient}&number=10&addRecipeInformation=true`
-    );
-    const data = await res.json();
-    console.log(data)
-    setRecipeData(data.results);
-    setBeginSearch(true);
+  function handleSubmit(e){
+    e.preventDefault();
+    async function getRecipes() {
+      const res = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_CULINARIAN_APP_API_KEY}&includeIngredients=${
+          formData.firstIngredient
+        },${formData.secondIngredient},${formData.thirdIngredient}&number=10&addRecipeInformation=true`
+      );
+      const data = await res.json();
+      console.log(data)
+      setRecipeData(data.results);
+      setBeginSearch(true);
+    }
+    getRecipes()
   }
+  
 
 
   function resetButton() {
@@ -48,7 +52,7 @@ function App() {
     <main>
       <Header />
       {!beginSearch ? (
-        <IngredientsForm formData={formData} handleChange={handleChange} getRecipes={getRecipes} />
+        <IngredientsForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
       ) : (
         <RecipeList formData={formData} resetButton={resetButton} recipeData={recipeData} />
       )}
