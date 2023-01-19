@@ -36,9 +36,8 @@ function App() {
     getRecipes()
   }
   
-
-
-  function resetButton() {
+  function resetButton(e) {
+    console.log(e)
     setBeginSearch(false)
     setFormData({
       firstIngredient: '',
