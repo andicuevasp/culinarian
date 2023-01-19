@@ -25,7 +25,7 @@ function App() {
     const res = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_CULINARIAN_APP_API_KEY}&includeIngredients=${
         formData.firstIngredient
-      },${formData.secondIngredient},${formData.thirdIngredient}&number=5&addRecipeInformation=true`
+      },${formData.secondIngredient},${formData.thirdIngredient}&number=10&addRecipeInformation=true`
     );
     const data = await res.json();
     console.log(data)
@@ -35,7 +35,13 @@ function App() {
 
 
   function resetButton() {
-    setBeginSearch(false);
+    setBeginSearch(false)
+    setFormData({
+      firstIngredient: '',
+      secondIngredient: '',
+      thirdIngredient: '',
+    });
+    setRecipeData([]);
   }
 
   return (
