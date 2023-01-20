@@ -1,5 +1,5 @@
 export default function RecipeList(props) {
-
+//maps over recipeData to create list items for each recipe
   const recipeElement = props.recipeData.map((recipe) => {
     return (
         <li key={recipe.title}>

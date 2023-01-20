@@ -63,12 +63,12 @@ h1 {
 
 h2 {
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.25em;
   text-align: justify;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 400;
   text-align: left;
   margin-bottom: 5px;
@@ -89,7 +89,7 @@ input {
 }
 
 input[type="text"] {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-family: 'Inter', sans-serif;
   color: #FAAB78;
 }
@@ -122,10 +122,6 @@ ul {
 
 li {
   list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   margin: 10px;
 }
 
@@ -146,10 +142,10 @@ a:hover {
 
 a > img {
   border: 3px solid white;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 0;
 }
 
 h4 {
-  max-width: 400px;
+  max-width: 300px;
 }
